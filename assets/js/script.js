@@ -1,22 +1,31 @@
 $(document).ready(function () {
 
-var DateTime = luxon.DateTime
-var past = DateTime.minus({hours: 1})
-var present = DateTime.now()
-var future = DateTime.plus({hours: 1})
+    var DateTime = luxon.DateTime
 
-// displays current date and time at the top of the page
-$("#currentDay").text(DateTime.now().toLocaleString(DateTime.DATE_MED_WITH_WEEKDAY))
+    // displays current date and time at the top of the page
+    $("#currentDay").text(DateTime.now().toLocaleString(DateTime.DATE_MED_WITH_WEEKDAY))
 
-// if DateTime.now is > past, then color textarea grey
-// if 
-var setColors = document.getElementById("text-area")
-$("text-area").each(function(){
-    var val = parseInt($(this).prop("id"))
+    var currentHour = DateTime.now().toFormat("H")
+    var timeBlock = $(".text-area");
 
-    if(val > DateTime && val < future){
-        $(this).css("background-color", "blue")
-    }
-})
+    // for each element with the class text-area, checks what time it is and color codes accordingly
+    timeBlock.each(function() {
+        
+        var hour = parseInt($(this).attr("id").split("hour")[1]) // i don't understand this
+        if(hour == currentHour){
+            $(this).addClass("present")
+        } else if (currentHour > hour){
+            $(this).addClass("past")
+        } else {
+            $(this).addClass("future")
+        }
+    })
 
-})
+}) // document get ready function ends
+
+// local storage
+// var btnEl = $("textarea[type='submit']")
+// btnEl.on("click", function(event){
+//     event.preventDefault()
+    
+// })

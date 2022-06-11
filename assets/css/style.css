@@ -25,7 +25,7 @@ textarea{
   white-space: pre-wrap;
 }
 
-.time-block{
+#time-block{
   text-align: center;
   border-radius: 15px;
 }
@@ -63,13 +63,18 @@ textarea{
   border-left: 1px solid black;
   border-top-right-radius: 15px;
   border-bottom-right-radius: 15px;
+  width: 80px;
   background-color: #06AED5;
-  color: white;
 }
 
-.saveBtn i:hover {
+.saveBtn:hover {
   font-size: 20px;
   transition: all .3s ease-in-out;
+  color: white;
+}
+/* when button is clicked, javascript keeps the color white */
+.active {
+  color: white;
 }
 
 li{
